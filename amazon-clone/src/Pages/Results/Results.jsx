@@ -7,14 +7,17 @@ import { productUrl } from '../../API/endpoints';
 import ProductCard from "../../Components/Product/ProductCard"
 const Results = () => {
     const [results, setResults] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const {categoryName} = useParams();
     useEffect(()=>{
         axios.get(`${productUrl}/products/category/${categoryName}`)
         .then((res)=>{
             // console.log(res);
             setResults(res.data);
+            setIsLoading(false);
         }).catch((err)=>{
             console.log(err)
+            setIsLoading(false);
         })
     }, [])
     return (
@@ -27,6 +30,7 @@ const Results = () => {
                     results?.map((product)=>(
                     <ProductCard
                         key={product.id}
+                        renderAdd={true}
                         product={product}
                     />
                 ))}
