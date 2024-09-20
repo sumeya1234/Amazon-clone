@@ -5,7 +5,7 @@ import classes from './product.module.css';
 import { Link } from "react-router-dom";
 import { DataContext } from '../DataProvider/DataProvider';
 import { Type } from '../../Utility/action.type';
-const ProductCard = ({ product, flex, renderDesc }) => {
+const ProductCard = ({ product, flex, renderDesc, renderAdd }) => {
     const { image, title, id, rating, price, description } = product;
     const rate = rating?.rate || 0; // Use optional chaining
     const count = rating?.count || 0; 
@@ -35,13 +35,15 @@ const ProductCard = ({ product, flex, renderDesc }) => {
 
                     /*ratingcounter */
                 }
-                <small>{count}</small>
+                    <small>{count}</small>
                 </div>
                 <div>
-                {/* description */}
-                <CurrencyFormat amount={price} />
+                    {/* description */}
+                    <CurrencyFormat amount={price} />
                 </div>
-                <button className={classes.button} onClick={addToCart}>Add to Cart</button>
+                {
+                    renderAdd && <button className={classes.button} onClick={addToCart}>Add to Cart</button>
+                }
             </div>
         </div>
     );

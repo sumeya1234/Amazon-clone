@@ -3,14 +3,17 @@ import classes from './header.module.css'
 import Logo from "../../assets/images/amazon.png"
 import Flag from "../../assets/images/flag1.jpg"
 import { SlLocationPin } from "react-icons/sl"
-import { FaSearch } from "react-icons/fa"
+import { CiSearch } from "react-icons/ci";
 import { BiCart } from "react-icons/bi"
 import LowerHeader from './LowerHeader'
 import { Link } from 'react-router-dom';
 import { DataContext } from '../DataProvider/DataProvider'
 
 const Header = () => {
-    const [{basket},dispatch] = useContext(DataContext)
+    const [{basket},dispatch] = useContext(DataContext);
+    const totalItem = basket?.reduce((amount, item)=>{
+        return item.amount + amount;
+    },0)
     return (
         <section className={classes.fixed}>
             <section>
@@ -33,7 +36,7 @@ const Header = () => {
                             <option value="">All</option>
                         </select>
                         <input type="text" placeholder='Search product' />
-                        <FaSearch size={25}/>
+                        <CiSearch size={39}/>
                         {/* icon */}
                     </div>
                     {/* right side link */}
@@ -60,7 +63,7 @@ const Header = () => {
                         <Link to="/cart" className={classes.cart}>
                             {/* icon */}
                             <BiCart size={35}/>
-                            <span>{basket.length}</span>
+                            <span>{totalItem}</span>
                         </Link>
                     </div>
                 </div>
