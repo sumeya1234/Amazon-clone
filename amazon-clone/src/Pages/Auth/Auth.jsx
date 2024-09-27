@@ -75,7 +75,7 @@ const Auth = () => {
                 </form>
                 <p>
                     {/* Agreement */}
-                    By signing-in you agree to the AMAZON FAKE CLONE Conditions of the Use and Sale. Plase see our Privacy notice, our cookies Notice and our Intenet-Based Ads Notice. 
+                    By signing-in you agree to the AMAZON FAKE CLONE Conditions of the Use and Sale. Please see our Privacy notice, our cookies Notice and our Internet-Based Ads Notice. 
                 </p>
                 <button type="submit" onClick={authHandler} name="signUp" className={classes.register_button}>
                     {

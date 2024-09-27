@@ -11,7 +11,7 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 const Routing = () => {
     const stripePromise = loadStripe(
-      "pk_test_51Q2bOjFmzPHc9oZGYemjusHBgSBW3BKYOFxljFw8bZm9lSYfFMS5H7tXPadsYpcdKZz5hcoIxfEJUCjcbumkVVqE00ysfQXBUQ"
+        "pk_test_51Q2bOjFmzPHc9oZGYemjusHBgSBW3BKYOFxljFw8bZm9lSYfFMS5H7tXPadsYpcdKZz5hcoIxfEJUCjcbumkVVqE00ysfQXBUQ"
     );
     return (
         <>
@@ -21,8 +21,8 @@ const Routing = () => {
                     <Route path='/auth' element={<Auth/>}/>
                     <Route path='/payments' element={
                         <Elements stripe={stripePromise}>
-                        <Payment/>
-                    </Elements>
+                            <Payment/>
+                        </Elements>
                     }/>
                     <Route path='/orders' element={<Orders/>}/>
                     <Route path="/category/:categoryName" element={<Results/>}/>
