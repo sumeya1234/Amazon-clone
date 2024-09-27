@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import classes from "./auth.module.css";
 import Logo from "../../assets/images/amazon-logo.png";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {auth} from "../../Utility/firebase"
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth"
 import {DataContext} from "../../Components/DataProvider/DataProvider"
@@ -12,7 +12,8 @@ const Auth = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [{user}, dispatch] = useContext(DataContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const navStateData = useLocation();
     const [loading, setIsLoading] = useState({
         signIn: false,
         signUp: false
@@ -28,7 +29,7 @@ const Auth = () => {
                     user:userInfo.user
                 })
                 setIsLoading({ ...loading, signIn:false})
-                navigate("/")
+                navigate(navStateData?.state?.redirect || "/");
             }).catch((err)=> {
                 setError(err.message)
                 setIsLoading({ ...loading, signIn:false})
@@ -43,7 +44,7 @@ const Auth = () => {
                     user:userInfo.user
                 });
                 setIsLoading({ ...loading, signUp: false });
-                navigate("/");
+                navigate(navStateData?.state?.redirect || "/");
             }).catch((err)=> {
                 setError(err.message);
                 setIsLoading({ ...loading, signUp: false });
@@ -57,6 +58,20 @@ const Auth = () => {
             </Link>
             <div className={classes.login_container}>
                 <h1>Sign In</h1>
+                {
+                    navStateData?.state?.msg && (
+                        <small
+                            style={{
+                                padding:"5px",
+                                textAlign: "center",
+                                color: "red",
+                                fontWeight: "bold"
+                            }}
+                        >
+                            {navStateData?.state?.msg}
+                        </small>
+                    )
+                }
                 <form action="">
                     <div>
                         <label htmlFor="email">Email</label>
