@@ -28,9 +28,9 @@
 .payment_details{
     font-size: 20px;
 }
-/* .payment_price{
-    padding: 20px;
-} */
+.payment_price{
+    padding: 20px 0;
+}
 .payment_price{
     /* display: flex; */
     gap: 10px;

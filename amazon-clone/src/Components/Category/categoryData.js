@@ -15,7 +15,7 @@ export const categoryInfo = [
         id : 3,
         title: "Men's clothing",
         name: "men's clothing",
-        imgLink: "https://m.media-amazon.com/images/I/618bcm65ksL._AC_UL480_FMwebp_QL65_.jpg",
+        imgLink: "https://m.media-amazon.com/images/I/61sx6rWHOML._AC_UY218_.jpg",
         },
     {
         id : 4,

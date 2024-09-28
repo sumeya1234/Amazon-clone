@@ -10,7 +10,8 @@
     align-items: center;
     color: white;
     height: 70px;
-    /* padding: 30px; */
+    padding: 10px;
+    justify-content: space-between;
 }
 .logo__container{
     display: flex;
@@ -146,7 +147,7 @@
         height: auto;
     }
     .lower__container ul li:not(:first-child){
-        display: none;
+        display: none !important;
     }
     .language{
         display: none;
